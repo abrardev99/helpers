@@ -12,13 +12,23 @@ on:
 
 jobs:
   pest:
-    name: Tests (Pest) Up
+    name: Tests (Pest) L${{ matrix.laravel }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        laravel: [9.*, 8.*]
+        include:
+          -   laravel: 9.*
+              testbench: 7.*
+          -   laravel: 8.*
+              testbench: ^6.9
 
     steps:
     - uses: actions/checkout@v2
     - name: Install composer dependencies
-      run: composer install
+      run: |
+            composer require "illuminate/support:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
     - name: Run tests
       run: vendor/bin/pest
 
