@@ -12,7 +12,7 @@ on:
 
 jobs:
   pest:
-    name: Tests (Pest)
+    name: Tests (Pest) Up
     runs-on: ubuntu-latest
 
     steps:
