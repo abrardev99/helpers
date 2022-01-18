@@ -29,7 +29,6 @@ jobs:
     - name: Install composer dependencies
       run: |
             composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-            composer update
     - name: Run tests
       run: vendor/bin/pest
 
