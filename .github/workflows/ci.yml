@@ -20,14 +20,14 @@ jobs:
         laravel: [9, 8]
         include:
           -   laravel: 9
-              testbench: 7.0
+              testbench: 7.*
           -   laravel: 8
               testbench: ^6.9
 
     steps:
     - uses: actions/checkout@v2
     - name: Install composer dependencies
-      run:  composer require "laravel/framework:^${{ matrix.laravel }}.0" "orchestra/testbench:^${{ matrix.testbench }}"
+      run:  composer require "laravel/framework:^${{ matrix.laravel }}.0" "orchestra/testbench:${{ matrix.testbench }}"
     - name: Run tests
       run: vendor/bin/pest
 
